@@ -1,0 +1,20 @@
+{
+  "name": "hapi-named-routes",
+  "version": "0.0.1",
+  "description": "Hapi plugin to add named routes to your view templates",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poeticninja/hapi-named-routes"
+  },
+  "keywords": [
+    "hapi",
+    "routes",
+    "plugin"
+  ],
+  "author": "Saul Maddox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poeticninja/hapi-named-routes/issues"
+  }
+}
