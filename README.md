@@ -3,6 +3,11 @@ Hapi Named Routes
 
 Hapi plugin to add named routes to your view templates.
 
+## Goal:
+In your view templates, instead of always typing the path in your links, you can now have access to the route name variable. It will just print the path.
+
+## How it works:
+
 In your view template you can now access `path.name` where name is what you named the route.
 
 To name a route you need to pass the config object to the route with the app.name being defined.
@@ -10,12 +15,12 @@ To name a route you need to pass the config object to the route with the app.nam
 Example:
 ```
 // Route Config
-var homepage = {
+var about = {
     handler: function (request) {
-        request.reply.view('index');
+        request.reply.view('about');
     },
     app : {
-        name: 'homepage'
+        name: 'about'
     }
 };
 
@@ -23,22 +28,20 @@ var homepage = {
 routes = [
     {
         method: 'GET',
-        path: '/',
-        config: homepage
+        path: '/about',
+        config: about
     }
 ]
+
+server.addRoutes(routes);
 ```
-Based on the example above you now have access to `path.homepage` in your view templates, and will print out the routes path `/`.
+Based on the example above you now have access to `path.about` in your view templates, and will print out the routes path `/about`.
 
 Handlebars:
-`{{path.name}}`
+`<a href="{{path.about}}">About</a>`
 
 Jade:
-`#{path.name}`
+`a(href="#{path.about}") About`
 
-Right now this is being beta tested.
-
-Documentation to be improved shortly.
-
-
-
+### Other
+You can see this being used in the Hapi Ninja boilerplate example. [https://github.com/poeticninja/hapi-ninja](https://github.com/poeticninja/hapi-ninja)
