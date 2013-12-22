@@ -22,7 +22,6 @@ exports.register = function (plugin, options, callback) {
 
             // Check to see if the current route table has any new routes since plugin loaded
             if (checkRoutingLength > routingLength) {
-                console.log('test');
                 // If new routes then update routingTableLength and the routingTable
                 routingLength = checkRoutingLength;
                 routingTable = checkRoutingTable;
