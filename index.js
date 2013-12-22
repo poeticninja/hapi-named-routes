@@ -1,8 +1,8 @@
 exports.register = function (plugin, options, callback) {
-    // Initialize  the routing table from the server
-    var routingTable = server.routingTable();
-    // Get length of routing table for checking later if new routes get added.
-    var routingLength =  Object.keys(routingTable);
+    // Start the plugin routing table
+    var routingTable = {};
+    // Set length of routing table for checking later if new routes get added.
+    var routingLength =  [];
 
     // Setup route names object to be used in the view context.
     var namedRoutes = {};
@@ -11,16 +11,18 @@ exports.register = function (plugin, options, callback) {
     plugin.ext('onPostHandler', function (request, next) {
         // Get the response object
         var response = request.response();
-        // Get current routing table
-        var checkRoutingTable = server.routingTable();
-        // Get length of current route table
-        var checkRoutingLength =  Object.keys(checkRoutingTable);
 
         // Check to see if the response is a view
         if (response.variety === 'view') {
 
+            // Get current routing table
+            var checkRoutingTable = request.server.routingTable();
+            // Get length of current route table
+            var checkRoutingLength =  Object.keys(checkRoutingTable);
+
             // Check to see if the current route table has any new routes since plugin loaded
             if (checkRoutingLength > routingLength) {
+                console.log('test');
                 // If new routes then update routingTableLength and the routingTable
                 routingLength = checkRoutingLength;
                 routingTable = checkRoutingTable;

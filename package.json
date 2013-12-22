@@ -1,6 +1,6 @@
 {
   "name": "hapi-named-routes",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Hapi plugin to add named routes to your view templates",
   "main": "index.js",
   "repository": {
