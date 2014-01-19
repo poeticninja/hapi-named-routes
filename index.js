@@ -10,13 +10,13 @@ exports.register = function (plugin, options, callback) {
     // Hook onto the 'onPostHandler'
     plugin.ext('onPostHandler', function (request, next) {
         // Get the response object
-        var response = request.response();
+        var response = request.response;
 
         // Check to see if the response is a view
         if (response.variety === 'view') {
 
             // Get current routing table
-            var checkRoutingTable = request.server.routingTable();
+            var checkRoutingTable = request.server.table();
             // Get length of current route table
             var checkRoutingLength =  Object.keys(checkRoutingTable);
 
@@ -29,7 +29,7 @@ exports.register = function (plugin, options, callback) {
                 // Setup the routingNames array
                 var routingNames = [];
                 // Setup the path object for the route names to be added to in the view
-                response.view.context.path = {};
+                response.source.context.path = {};
 
                 // Loop over the routingTable
                 for(var item in routingTable){
@@ -41,13 +41,13 @@ exports.register = function (plugin, options, callback) {
                         var routePath = routingTable[item].settings.path;
 
                         // Put the current route and path being looped over into the view layer variable path
-                        response.view.context.path[routeName] = routePath;
-                        namedRoutes = response.view.context.path;
+                        response.source.context.path[routeName] = routePath;
+                        namedRoutes = response.source.context.path;
                     }
                 }
             } else {
                 // if no new routes then use the current named routes for the views
-                response.view.context.path = namedRoutes;
+                response.source.context.path = namedRoutes;
             }
         }
         next();
