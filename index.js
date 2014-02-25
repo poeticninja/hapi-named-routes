@@ -26,8 +26,6 @@ exports.register = function (plugin, options, callback) {
                 routingLength = checkRoutingLength;
                 routingTable = checkRoutingTable;
 
-                // Setup the routingNames array
-                var routingNames = [];
                 // Setup the path object for the route names to be added to in the view
                 response.source.context.path = {};
 
