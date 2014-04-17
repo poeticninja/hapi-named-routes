@@ -35,8 +35,8 @@ exports.register = function (plugin, options, callback) {
                     if(typeof routingTable[item].settings.app.name != 'undefined'){
                         // Get the route name from the config object and assign it to routeName
                         var routeName = routingTable[item].settings.app.name;
-                        // Get the route path from the config object and assign it to routePath
-                        var routePath = routingTable[item].settings.path;
+                        // Get the route path from the config object, remove path wildcard, and assign it to routePath
+                        var routePath = routingTable[item].settings.path.replace(/{(.*?)}/g, "");
 
                         // Put the current route and path being looped over into the view layer variable path
                         response.source.context.path[routeName] = routePath;
