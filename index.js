@@ -1,4 +1,4 @@
-exports.register = function (plugin, options, callback) {
+exports.register = function (plugin, options, next) {
     // Start the plugin routing table
     var routingTable = {};
     // Set length of routing table for checking later if new routes get added.
@@ -48,6 +48,11 @@ exports.register = function (plugin, options, callback) {
                 response.source.context.path = namedRoutes;
             }
         }
-        next();
+        return next();
     });
+    return next();
+};
+
+exports.register.attributes = {
+    pkg: require("./package.json")
 };
