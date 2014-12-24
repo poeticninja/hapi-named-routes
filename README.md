@@ -16,8 +16,8 @@ Example:
 ```
 // Route Config
 var about = {
-    handler: function (request) {
-        request.reply.view('about');
+    handler: function (request, reply) {
+        reply.view('about');
     },
     app : {
         name: 'about'
@@ -33,7 +33,7 @@ routes = [
     }
 ]
 
-server.addRoutes(routes);
+server.route(routes);
 ```
 Based on the example above you now have access to `path.about` in your view templates, and will print out the routes path `/about`.
 
