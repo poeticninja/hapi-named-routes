@@ -22,6 +22,8 @@ exports.register = function (server, options, next) {
             // Get length of current route table
             var checkRoutingLength =  Object.keys(checkRoutingTable);
 
+            // Initialize if context is not defined
+            response.source.context = response.source.context || {};
             // Check to see if the current route table has any new routes since plugin loaded
             if (checkRoutingLength > routingLength) {
                 // If new routes then update routingTableLength and the routingTable
