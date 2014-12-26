@@ -1,5 +1,3 @@
-/*jslint node: true */
-
 exports.register = function (server, options, next) {
     // Start the plugin routing table
     var routingTable = {};
@@ -35,10 +33,10 @@ exports.register = function (server, options, next) {
 
                 // Loop over the routingTable
                 for(var item in routingTable){
-                    //  Look for any routes with app.name defined in the config object
-                    if(typeof routingTable[item].settings.app.name !== 'undefined') {
+                    //  Look for any routes with id defined in the config object
+                    if(typeof routingTable[item].settings.id !== 'undefined') {
                         // Get the route name from the config object and assign it to routeName
-                        var routeName = routingTable[item].settings.app.name;
+                        var routeName = routingTable[item].settings.id;
                         // Get the route path from the config object, remove path wildcard, and assign it to routePath
                         var routePath = routingTable[item].path.replace(/{(.*?)}/g, '');
 

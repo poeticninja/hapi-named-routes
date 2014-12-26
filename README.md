@@ -8,9 +8,9 @@ In your view templates, instead of always typing the path in your links, you can
 
 ## How it works:
 
-In your view template you can now access `path.name` where name is what you named the route.
+In your view template you can now access `path.name` where name is the id of the route.
 
-To name a route you need to pass the config object to the route with the app.name being defined.
+To name a route you need to pass the config object to the route with the id being defined.
 
 Example:
 ```
@@ -19,9 +19,7 @@ var about = {
     handler: function (request, reply) {
         reply.view('about');
     },
-    app : {
-        name: 'about'
-    }
+    id: 'about'
 };
 
 // Array of routes for Hapi
@@ -43,5 +41,9 @@ Handlebars:
 Jade:
 `a(href="#{path.about}") About`
 
+### Breaking changes
+In Hapi 8.0.0 the `id` property for a route was added to allow a developer to access a route path using [`server.lookup()`](#serverlookupid). As of hapi-named-routes `0.3.0` we use this `id` instead of `app.name` like we previoisly used.
+
 ### Other
+
 You can see this being used in the Hapi Ninja boilerplate example. [https://github.com/poeticninja/hapi-ninja](https://github.com/poeticninja/hapi-ninja)
